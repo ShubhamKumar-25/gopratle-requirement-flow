@@ -13,10 +13,22 @@ connectDB();
 const app = express();
 
 // Middlewares
+// app.use(cors({
+//   origin: process.env.CLIENT_URL || '*',
+//   credentials: true
+// }));
+
+const allowedOrigin = process.env.CLIENT_URL 
+  ? process.env.CLIENT_URL.replace(/\/$/, "") // trailing slash automatic clean kar dega
+  : '*';
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
+  origin: allowedOrigin,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+
+
 app.use(express.json());
 
 // Routes
