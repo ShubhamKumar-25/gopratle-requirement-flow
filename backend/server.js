@@ -19,7 +19,7 @@ const app = express();
 // }));
 
 const allowedOrigin = process.env.CLIENT_URL 
-  ? process.env.CLIENT_URL.replace(/\/$/, "") // trailing slash automatic clean kar dega
+  ? process.env.CLIENT_URL.replace(/\/$/, "") 
   : '*';
 
 app.use(cors({
